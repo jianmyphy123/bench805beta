@@ -15,10 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'src/build')));
 
-app.get('*', function (req, res) {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './src/build', 'index.html'));
 });
 
-app.listen(PORT, process.env.IP, function(){
+app.listen(PORT, process.env.IP, () => {
   console.log("Server has started " + PORT);
 });
