@@ -3,18 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server/app.js"
+    "start": "node src/app.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "jade": "~1.11.0",
+    "lodash": "^4.17.4",
     "morgan": "~1.8.1",
     "mysql2": "^1.4.2",
     "sequelize": "^4.8.2",
     "sequelize-cli": "^2.8.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "validator": "^8.2.0"
   }
 }

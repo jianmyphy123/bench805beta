@@ -1,16 +1,7 @@
 'use strict';
-
 module.exports = {
-  up: function (queryInterface, Sequelize) {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
-    */
-
-    return queryInterface.createTable('user', {
+  up: function(queryInterface, Sequelize) {
+    return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -18,16 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       firstname: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.STRING
       },
       lastname: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.STRING
       },
       email: {
-        allowNull: false,
         type: Sequelize.STRING,
+        allowNull: false,
         unique: true,
         indexes: [
           {
@@ -36,19 +27,19 @@ module.exports = {
         ]
       },
       password: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.STRING
       },
       company: {
-        allowNull: true,
         type: Sequelize.STRING
       },
       jobfunction: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.STRING
       },
       active: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       temporaryToken: {
         type: Sequelize.STRING
@@ -61,6 +52,10 @@ module.exports = {
         defaultValue: Sequelize.NOW
       },
       enabled: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
+      },
+      privilege: {
         type: Sequelize.INTEGER,
         defaultValue: 0
       }
@@ -70,15 +65,7 @@ module.exports = {
       charset: 'utf8'                    // default: null
     });
   },
-
-  down: function (queryInterface, Sequelize) {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.dropTable('users');
-    */
-    return queryInterface.dropTable('user');
+  down: function(queryInterface, Sequelize) {
+    return queryInterface.dropTable('Users');
   }
 };

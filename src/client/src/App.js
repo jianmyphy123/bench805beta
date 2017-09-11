@@ -4,7 +4,7 @@ import { Home, Login, Signup, About, TermsOfService, PrivacyPolicy } from './pag
 class App extends Component {
   render() {
     return (
-      <PrivacyPolicy />
+      <Signup />
     );
   }
 }

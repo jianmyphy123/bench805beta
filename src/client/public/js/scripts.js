@@ -353,55 +353,55 @@ jQuery(document).ready(function(){
 		}
 	});
 
-	$(".form_signup").validate({
-		rules:{
-			firstname:{
-				required: true
-			},
-			lastname:{
-				required: true
-			},
-			email:{
-				required: true,
-				email: true
-			},
-			jobfunction:{
-				required: true
-			},
-			password:{
-				required: true,
-				minlength: 6
-			},
-			password2:{
-				required: true,
-				equalTo: "#password"
-			}
-
-		},
-		messages:{
-			firstname:{
-				required: "This field is required."
-			},
-			lastname:{
-				required: "This field is required."
-			},
-			email:{
-				required: "This field is required.",
-				email: "Wrong format."
-			},
-			jobfunction:{
-				required: "Select one of the items."
-			},
-			password:{
-				required: "This field is required.",
-				minlength: "Too short password."
-			},
-			password2:{
-				required: "Please confirm the password.",
-				equalTo: "Passwords do not match"
-			}
-		}
-	});
+	// $(".form_signup").validate({
+	// 	rules:{
+	// 		firstname:{
+	// 			required: true
+	// 		},
+	// 		lastname:{
+	// 			required: true
+	// 		},
+	// 		email:{
+	// 			required: true,
+	// 			email: true
+	// 		},
+	// 		jobfunction:{
+	// 			required: true
+	// 		},
+	// 		password:{
+	// 			required: true,
+	// 			minlength: 6
+	// 		},
+	// 		password2:{
+	// 			required: true,
+	// 			equalTo: "#password"
+	// 		}
+	//
+	// 	},
+	// 	messages:{
+	// 		firstname:{
+	// 			required: "This field is required."
+	// 		},
+	// 		lastname:{
+	// 			required: "This field is required."
+	// 		},
+	// 		email:{
+	// 			required: "This field is required.",
+	// 			email: "Wrong format."
+	// 		},
+	// 		jobfunction:{
+	// 			required: "Select one of the items."
+	// 		},
+	// 		password:{
+	// 			required: "This field is required.",
+	// 			minlength: "Too short password."
+	// 		},
+	// 		password2:{
+	// 			required: "Please confirm the password.",
+	// 			equalTo: "Passwords do not match"
+	// 		}
+	// 	}
+	// });
 
 
 
