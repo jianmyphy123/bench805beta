@@ -25,7 +25,7 @@ function validateInput(data) {
     errors.email = 'Email is invalid';
 
   if(Validator.isEmpty(data.jobfunction))
-    errors.jobfunction = 'This field is required';
+    errors.jobfunction = 'Select one of the items';
 
   if(Validator.isEmpty(data.password))
     errors.password = 'This field is required';
@@ -106,6 +106,7 @@ class SignupForm extends Component {
         (res) => {
           console.log(res.data);
           this.setState({ isLoading: false });
+          this.props.history.push('/signup/confirmation');
         },
         (err) => {
           this.setState({ errors: err.response.data, isLoading: false });
@@ -118,6 +119,16 @@ class SignupForm extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+  }
+
+  gotoTermsOfService(e) {
+    e.preventDefault();
+    this.props.history.push('/termsofservice');
+  }
+
+  gotoLogin(e) {
+    e.preventDefault();
+    this.props.history.push('/login');
   }
 
   render() {
@@ -158,9 +169,9 @@ class SignupForm extends Component {
                 <TextFieldGroup  type="password" placeholder="Password*" name="password" onChange={this.onChange} error={errors.password} />
                 <TextFieldGroup  type="password" placeholder="Confirm password*" name="password2" onChange={this.onChange} error={errors.password2} />
                 <div className="form_footer">
-                  <div className="form_footer_info ta_c">By clicking &ldquo;Sign up&rdquo; I agree to<br/><a href="/terms_of_service">Terms of Service</a></div>
+                  <div className="form_footer_info ta_c">By clicking &ldquo;Sign up&rdquo; I agree to<br/><a onClick={this.gotoTermsOfService.bind(this)}>Terms of Service</a></div>
                   <div className="form_footer_btns two_buttons clrfx">
-                    <div className="btn_color_space"><a href="/users/login">Log In</a></div>
+                    <div className="btn_color_space"><a onClick={this.gotoLogin.bind(this)}>Log In</a></div>
                     <div className="btn_color_fill">
                       <button disabled={this.state.isLoading || this.state.invalid} type="submit" onClick={this.onSignup.bind(this)}>Sign Up</button>
                     </div>
@@ -180,7 +191,8 @@ class SignupForm extends Component {
 
 SignupForm.propTypes = {
   userSignupRequest: PropTypes.func.isRequired,
-  isUserExists: PropTypes.func.isRequired
+  isUserExists: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 export default connect(null, {userSignupRequest, isUserExists})(SignupForm);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Footer, SignupForm } from '../components';
 
-class Signup extends Component {
+class UserSignup extends Component {
 
   render() {
 
@@ -10,7 +10,7 @@ class Signup extends Component {
       <div id="main_container">
         <Header />
         <Footer />
-        <SignupForm />
+        <SignupForm history={this.props.history}/>
 
       </div>
 
@@ -20,4 +20,4 @@ class Signup extends Component {
 
 }
 
-export default Signup;
+export default UserSignup;

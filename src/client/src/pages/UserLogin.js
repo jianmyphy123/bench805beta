@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Footer, LoginForm } from '../components';
 
-class Login extends Component {
+class UserLogin extends Component {
 
   render() {
 
@@ -20,4 +20,4 @@ class Login extends Component {
 
 }
 
-export default Login;
+export default UserLogin;

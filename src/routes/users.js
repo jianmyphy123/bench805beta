@@ -4,7 +4,18 @@ var Validator = require('validator');
 var _ = require('lodash');
 var User = require('../models').User;
 var bcrypt = require('bcryptjs');
+var nodemailer = require('nodemailer');
+var jwt = require('jsonwebtoken');
+var config = require('../config/data');
 
+
+var mailTransporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: config.email.username,
+    pass: config.email.password
+  }
+});
 
 function validateInput(data) {
   var errors = {};
@@ -22,7 +33,7 @@ function validateInput(data) {
     errors.email = 'Email is invalid';
 
   if(Validator.isEmpty(data.jobfunction))
-    errors.jobfunction = 'This field is required';
+    errors.jobfunction = 'Select one of the items';
 
   if(Validator.isEmpty(data.password))
     errors.password = 'This field is required';
@@ -55,8 +66,33 @@ router.post('/', function(req, res, next) {
 
   validateInput(data).then(({errors, isValid}) => {
     if(isValid) {
+
+      const { firstname, lastname, email } = data;
+
       data.password = bcrypt.hashSync(data.password, 10);
-      User.create(data).then(user => res.json({confirmation: 'success'}));
+      data.temporaryToken = jwt.sign({ firstname, lastname, email }, config.secret, { expiresIn: '24h'});
+      User.create(data).then(user => {
+
+        var emailOptions = {
+          from: config.email.serviceName + ' <'+ config.email.serviceEmail +'>',
+          to: email,
+          subject: config.domain + ' Activation Link',
+          text: 'Hello '+firstname+',Thank you for your registering at '+ config.domain +'. Please click on the link to complete your activation: '+config.domain+'/activate/'+data.temporaryToken,
+          html: 'Hello <strong>'+firstname+'</strong>,<br><br>Thank you for your registering at '+ config.domain +'. Please click on the link to complete your activation: <br><br><a href="'+config.domain+'/activate/'+data.temporaryToken+'">'+config.domain+'/activate</a>'
+        }
+
+        mailTransporter.sendMail(emailOptions, (error, info) => {
+          if(error) {
+            console.log(error);
+          }
+          else {
+            console.log('Message Sent: '+info.response);
+            res.json({confirmation: 'success'});
+          }
+        });
+
+
+      });
     } else {
       res.status(400).json(errors);
     }
@@ -68,6 +104,68 @@ router.post('/:identifier', function(req, res) {
 
   var email = req.params.identifier;
   User.findOne({where: {email}, attributes: ['email']}).then(user => {res.json({user})});
+
+});
+
+router.post('/activate/:token', function(req, res) {
+
+  let token = req.params.token;
+
+  User.findOne({where: {temporaryToken: token}}).then(user => {
+    if(!user) {
+      res.status(400).json({errors: 'Activation link has expires'});
+    } else {
+      jwt.verify(token, config.secret, (err, decoded) => {
+        if(err) {
+          res.status(400).json({errors: 'Activation link has expires'});
+        } else {
+          user.update({active: true, temporaryToken: null}).then(() => {
+            res.json({confirmation: 'success'});
+          });
+        }
+      });
+    }
+  })
+
+  // getUserByTemporaryToken(token, user => {
+  //
+  //   jwt.verify(token, jwtSecret, (err, decoded) => {
+  //
+  //     if(err) {
+  //
+  //       req.flash('error', 'Activation link has expires');
+  //       res.redirect('/users/signup/index');
+  //
+  //     } else if(!user) {
+  //       req.flash('error', 'Activation link has expires');
+  //       res.redirect('/users/signup/index');
+  //     } else {
+  //
+  //       activateAccount(token, () => {
+  //
+  //         var emailOptions = {
+  //           from: emailConfig.serviceName + ' <'+ emailConfig.serviceEmail +'>',
+  //           to: user.email,
+  //           subject: 'Your Account Activated',
+  //           text: 'Hello '+user.firstname+', Your account has been successfully activated!',
+  //           html: 'Hello <strong>'+user.firstname+'</strong>,<br><br>Your account has been successfully activated!'
+  //         }
+  //
+  //         mailTransporter.sendMail(emailOptions, (error, info) => {
+  //           if(error) {
+  //             console.log(error);
+  //           } else {
+  //             console.log('Message Sent: '+info.response);
+  //
+  //             res.render('users/signup/congratulation', {title: 'Congratulations'});
+  //           }
+  //         });
+  //       })
+  //
+  //     }
+  //
+  //   });
+  // });
 
 });
 
