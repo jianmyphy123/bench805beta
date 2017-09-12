@@ -3,6 +3,10 @@ import { Header, Footer, LoginForm } from '../components';
 
 class UserLogin extends Component {
 
+  componentDidMount() {
+    document.title = 'bench805.com | Log In';
+  }
+
   render() {
 
     return (
@@ -10,7 +14,7 @@ class UserLogin extends Component {
       <div id="main_container">
         <Header />
         <Footer />
-        <LoginForm />
+        <LoginForm history={this.props.history}/>
 
       </div>
 

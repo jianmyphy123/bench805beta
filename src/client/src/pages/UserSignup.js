@@ -3,6 +3,10 @@ import { Header, Footer, SignupForm } from '../components';
 
 class UserSignup extends Component {
 
+  componentDidMount() {
+    document.title = 'bench805.com | Sign Up';
+  }
+
   render() {
 
     return (
@@ -10,7 +14,7 @@ class UserSignup extends Component {
       <div id="main_container">
         <Header />
         <Footer />
-        <SignupForm history={this.props.history}/>
+        <SignupForm/>
 
       </div>
 

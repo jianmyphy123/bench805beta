@@ -125,47 +125,7 @@ router.post('/activate/:token', function(req, res) {
         }
       });
     }
-  })
-
-  // getUserByTemporaryToken(token, user => {
-  //
-  //   jwt.verify(token, jwtSecret, (err, decoded) => {
-  //
-  //     if(err) {
-  //
-  //       req.flash('error', 'Activation link has expires');
-  //       res.redirect('/users/signup/index');
-  //
-  //     } else if(!user) {
-  //       req.flash('error', 'Activation link has expires');
-  //       res.redirect('/users/signup/index');
-  //     } else {
-  //
-  //       activateAccount(token, () => {
-  //
-  //         var emailOptions = {
-  //           from: emailConfig.serviceName + ' <'+ emailConfig.serviceEmail +'>',
-  //           to: user.email,
-  //           subject: 'Your Account Activated',
-  //           text: 'Hello '+user.firstname+', Your account has been successfully activated!',
-  //           html: 'Hello <strong>'+user.firstname+'</strong>,<br><br>Your account has been successfully activated!'
-  //         }
-  //
-  //         mailTransporter.sendMail(emailOptions, (error, info) => {
-  //           if(error) {
-  //             console.log(error);
-  //           } else {
-  //             console.log('Message Sent: '+info.response);
-  //
-  //             res.render('users/signup/congratulation', {title: 'Congratulations'});
-  //           }
-  //         });
-  //       })
-  //
-  //     }
-  //
-  //   });
-  // });
+  });
 
 });
 

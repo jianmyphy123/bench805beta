@@ -3,6 +3,15 @@ import { Header, Footer } from '../components';
 
 class About extends Component {
 
+  componentDidMount() {
+    document.title = 'bench805.com | About';
+  }
+
+  gotoSignup(e) {
+    e.preventDefault();
+    this.props.history.push('/signup');
+  }
+
   render() {
 
     return (
@@ -60,9 +69,10 @@ class About extends Component {
                     <li>Property, Plant and Equipment</li>
                   </ul>
                 </p>
+                <br />
                 <p>Intangible asset useful lives.</p>
                 <div className="hn3">
-                  <div className="sign_up_btn"><a href="/users/signup">Take a look&nbsp;<span className="icon-icon_arrow_01"></span></a></div>
+                  <div className="sign_up_btn"><a onClick={this.gotoSignup.bind(this)}>Take a look <span className="icon-icon_arrow_01"></span></a></div>
                 </div>
               </div>
             </div>

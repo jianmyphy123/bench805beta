@@ -3,6 +3,10 @@ import { Header, Footer } from '../components';
 
 class UserSignupCongratulation extends Component {
 
+  componentDidMount() {
+    document.title = 'bench805.com | Congratulation';
+  }
+
   gotoLogin(e) {
     e.preventDefault();
 

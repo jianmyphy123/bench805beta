@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 
 class Landing extends Component {
 
@@ -17,7 +19,7 @@ class Landing extends Component {
                 <h2>Visualized Through Benchmarking</h2>
               </div>
               <br/>
-              <div style={{visibility: 'visible', animationName: 'fadeInUp'}} className="btn_color_fill wow fadeInUp option-4"><a href="/users/signup">Get Started for Free</a></div>
+              <div style={{visibility: 'visible', animationName: 'fadeInUp'}} className="btn_color_fill wow fadeInUp option-4"><Link to="/signup">Get Started for Free</Link></div>
             </div>
           </div>
           <div className="arrow_down slowjump"></div>
@@ -175,7 +177,7 @@ class Landing extends Component {
               <div style={{visibility: 'hidden', animationName: 'none'}} className="clrfx wow fadeInLeft option-1">
                 <div><span>Step 1</span><span>1</span></div>
                 <div>
-                  <div className="btn_color_fill"><a href="/users/signup">Sign Up</a></div>
+                  <div className="btn_color_fill"><Link to="/signup">Sign Up</Link></div>
                 </div>
               </div>
               <div style={{visibility: 'hidden', animationName: 'none'}} className="clrfx wow fadeInRight option-2">
@@ -199,7 +201,7 @@ class Landing extends Component {
             <div style={{visibility: 'hidden', animationName: 'none'}} className="hn2 ta_c wow fadeInDown option-1">
               <h2>Access exclusive data to guide your next purchase price allocation (ASC 805 or IFRS 3)</h2>
             </div><br/><br/>
-            <div style={{visibility: 'hidden', animationName: 'none'}} className="btn_color_fill wow fadeInUp option-4"><a href="/users/signup">Get Started for Free</a></div>
+          <div style={{visibility: 'hidden', animationName: 'none'}} className="btn_color_fill wow fadeInUp option-4"><Link to="/signup">Get Started for Free</Link></div>
           </div>
         </section>
       </div>

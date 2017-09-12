@@ -332,26 +332,26 @@ jQuery(document).ready(function(){
 	//===============================================================
 
 	// LOGIN
-	$(".form_login").validate({
-		rules:{
-			email:{
-				required: true,
-				email: true
-			},
-			password:{
-				required: true
-			}
-		},
-		messages:{
-			email:{
-				required: "This field is required.",
-				email: "Wrong format."
-			},
-			password:{
-				required: "This field can not be empty."
-			}
-		}
-	});
+	// $(".form_login").validate({
+	// 	rules:{
+	// 		email:{
+	// 			required: true,
+	// 			email: true
+	// 		},
+	// 		password:{
+	// 			required: true
+	// 		}
+	// 	},
+	// 	messages:{
+	// 		email:{
+	// 			required: "This field is required.",
+	// 			email: "Wrong format."
+	// 		},
+	// 		password:{
+	// 			required: "This field can not be empty."
+	// 		}
+	// 	}
+	// });
 
 	// $(".form_signup").validate({
 	// 	rules:{
@@ -405,22 +405,22 @@ jQuery(document).ready(function(){
 
 
 
-	$(".form_reset_password_email").validate({
-		rules:{
-			email:{
-				required: true,
-				email: true,
-				minlength: 4
-			}
-		},
-		messages: {
-			email: {
-				required: "Please enter your email.",
-				email: "Wrong format.",
-				minlength: "Too short email."
-			}
-		}
-	});
+	// $(".form_reset_password_email").validate({
+	// 	rules:{
+	// 		email:{
+	// 			required: true,
+	// 			email: true,
+	// 			minlength: 4
+	// 		}
+	// 	},
+	// 	messages: {
+	// 		email: {
+	// 			required: "Please enter your email.",
+	// 			email: "Wrong format.",
+	// 			minlength: "Too short email."
+	// 		}
+	// 	}
+	// });
 
 	$(".form_reset_password").validate({
 		rules:{

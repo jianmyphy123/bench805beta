@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Header, Footer } from '../components';
 
 class Signup extends Component {
+
+  componentDidMount() {
+    document.title = 'bench805.com | Terms Of Service';
+  }
 
   render() {
 
@@ -72,7 +77,7 @@ class Signup extends Component {
                 <div className="hn3">
                   <h3>Use of Information</h3>
                 </div>
-                <p>We reserve the right, and you authorize us to the use and assignment of all information regarding your use of the site and all information provided by you in any manner consistent with our&nbsp;<a href="/privacy_policy">Privacy Policy.</a></p>
+                <p>We reserve the right, and you authorize us to the use and assignment of all information regarding your use of the site and all information provided by you in any manner consistent with our&nbsp;<Link to="/privacypolicy">Privacy Policy.</Link></p>
                 <div className="hn3">
                   <h3>Governing Law</h3>
                 </div>

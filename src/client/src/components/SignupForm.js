@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Validator from 'validator';
 import TextFieldGroup from './common/TextFieldGroup';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { userSignupRequest, isUserExists } from '../actions/signupActions';
+import { userSignupRequest, isUserExists } from '../actions/userActions';
 
 
 
@@ -148,7 +149,7 @@ class SignupForm extends Component {
             <ul className="error">
             </ul><br/>
             <div className="mwidth_320">
-              <form action="/users" noValidate="novalidate" method="post" className="form_signup form_style_1">
+              <form className="form_signup form_style_1">
 
                 <TextFieldGroup  type="text" placeholder="First name*" name="firstname" onChange={this.onChange} error={errors.firstname} />
                 <TextFieldGroup  type="text" placeholder="Last name*" name="lastname" onChange={this.onChange} error={errors.lastname} />
@@ -169,11 +170,11 @@ class SignupForm extends Component {
                 <TextFieldGroup  type="password" placeholder="Password*" name="password" onChange={this.onChange} error={errors.password} />
                 <TextFieldGroup  type="password" placeholder="Confirm password*" name="password2" onChange={this.onChange} error={errors.password2} />
                 <div className="form_footer">
-                  <div className="form_footer_info ta_c">By clicking &ldquo;Sign up&rdquo; I agree to<br/><a onClick={this.gotoTermsOfService.bind(this)}>Terms of Service</a></div>
+                  <div className="form_footer_info ta_c">By clicking &ldquo;Sign up&rdquo; I agree to<br/><Link to='/termsofservice'>Terms of Service</Link></div>
                   <div className="form_footer_btns two_buttons clrfx">
                     <div className="btn_color_space"><a onClick={this.gotoLogin.bind(this)}>Log In</a></div>
                     <div className="btn_color_fill">
-                      <button disabled={this.state.isLoading || this.state.invalid} type="submit" onClick={this.onSignup.bind(this)}>Sign Up</button>
+                      <Link to="/signup" disabled={this.state.isLoading || this.state.invalid} type="submit">Sign Up</Link>
                     </div>
                   </div>
                 </div>
@@ -191,8 +192,7 @@ class SignupForm extends Component {
 
 SignupForm.propTypes = {
   userSignupRequest: PropTypes.func.isRequired,
-  isUserExists: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  isUserExists: PropTypes.func.isRequired
 }
 
 export default connect(null, {userSignupRequest, isUserExists})(SignupForm);

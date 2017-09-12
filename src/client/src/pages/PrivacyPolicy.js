@@ -3,6 +3,10 @@ import { Header, Footer } from '../components';
 
 class PrivacyPolicy extends Component {
 
+  componentDidMount() {
+    document.title = 'bench805.com | Privacy Policy';
+  }
+
   render() {
 
     return (

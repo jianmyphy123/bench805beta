@@ -7,6 +7,9 @@ import ActivateAccount from './ActivateAccount';
 import About from './About';
 import TermsOfService from './TermsOfService';
 import PrivacyPolicy from './PrivacyPolicy';
+import Dashboard from './Dashboard';
+import Admin from './Admin';
+import UserResetPassword from './UserResetPassword';
 
 export {
   Home,
@@ -17,5 +20,8 @@ export {
   ActivateAccount,
   About,
   TermsOfService,
-  PrivacyPolicy
+  PrivacyPolicy,
+  Dashboard,
+  Admin,
+  UserResetPassword
 }

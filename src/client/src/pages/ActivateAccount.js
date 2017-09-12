@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { activateAccount } from '../actions/signupActions';
+import { activateAccount } from '../actions/userActions';
 import { Header, Footer } from '../components';
 
 class ActivateAccount extends Component {
@@ -14,6 +14,8 @@ class ActivateAccount extends Component {
   }
 
   componentDidMount(prevProps, prevState) {
+
+    document.title = 'bench805.com | Activate Account'
 
     let token = this.props.match.params.token;
 

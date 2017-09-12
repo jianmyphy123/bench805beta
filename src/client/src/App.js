@@ -3,8 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
   Home,
   UserLogin, UserSignup, UserSignupConfirmation, UserSignupCongratulation, ActivateAccount,
-  About, TermsOfService, PrivacyPolicy
+  About, TermsOfService, PrivacyPolicy,
+  Dashboard, Admin,
+  UserResetPassword
 } from './pages';
+import requireAuth from './utils/requireAuth';
+import requireAdmin from './utils/requireAdmin';
 
 class App extends Component {
   render() {
@@ -21,6 +25,9 @@ class App extends Component {
             <Route path='/about' component={About} />
             <Route path='/termsofservice' component={TermsOfService} />
             <Route path='/privacypolicy' component={PrivacyPolicy} />
+            <Route path='/dashboard' component={requireAuth(Dashboard)} />
+            <Route path='/admin' component={requireAdmin(Admin)} />
+            <Route path='/resetpassword' component={UserResetPassword} />
           </Switch>
         </div>
       </Router>

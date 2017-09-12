@@ -3,6 +3,10 @@ import { Header, Footer } from '../components';
 
 class UserSignupConfirmation extends Component {
 
+  componentDidMount() {
+    document.title = 'bench805.com | Confirmation';
+  }
+
   render() {
     return (
 
