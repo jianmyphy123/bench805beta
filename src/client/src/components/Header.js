@@ -9,7 +9,7 @@ class Header extends Component {
 
 
   componentWillMount() {
-    loadjs('js/scripts.js');
+    loadjs('/js/scripts.js');
   }
 
   logout(e) {

@@ -8,6 +8,7 @@ var models = require('./models');
 
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var resetpassword = require('./routes/resetpassword');
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/resetpassword', resetpassword);
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, './client/build', 'index.html'));

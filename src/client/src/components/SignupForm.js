@@ -122,16 +122,6 @@ class SignupForm extends Component {
     });
   }
 
-  gotoTermsOfService(e) {
-    e.preventDefault();
-    this.props.history.push('/termsofservice');
-  }
-
-  gotoLogin(e) {
-    e.preventDefault();
-    this.props.history.push('/login');
-  }
-
   render() {
 
     const { errors } = this.state;
@@ -172,9 +162,9 @@ class SignupForm extends Component {
                 <div className="form_footer">
                   <div className="form_footer_info ta_c">By clicking &ldquo;Sign up&rdquo; I agree to<br/><Link to='/termsofservice'>Terms of Service</Link></div>
                   <div className="form_footer_btns two_buttons clrfx">
-                    <div className="btn_color_space"><a onClick={this.gotoLogin.bind(this)}>Log In</a></div>
+                    <div className="btn_color_space"><Link to="/login">Log In</Link></div>
                     <div className="btn_color_fill">
-                      <Link to="/signup" disabled={this.state.isLoading || this.state.invalid} type="submit">Sign Up</Link>
+                      <a onClick={this.onSignup} disabled={this.state.isLoading || this.state.invalid} type="submit">Sign Up</a>
                     </div>
                   </div>
                 </div>

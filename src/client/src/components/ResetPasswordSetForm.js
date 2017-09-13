@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Validator from 'validator';
 import _ from 'lodash';
-import { connect } from 'react-redux';
-import { login } from '../actions/authActions';
 
+import { reset } from '../actions/resetpasswordActions';
 import TextFieldGroup from './common/TextFieldGroup';
 import FlashMessages from './FlashMessages';
 
 function validateInput(data) {
   let errors = {};
 
-  if(Validator.isEmpty(data.email)) {
-    errors.email = 'This field is required';
-  }
-  if(!Validator.isEmail(data.email)) {
-    errors.email = 'Email is invalid';
-  }
   if(Validator.isEmpty(data.password)) {
     errors.password = 'This field is required';
   }
+  if(Validator.isEmpty(data.password2))
+    errors.password2 = 'This field is required';
+
+  if(!Validator.equals(data.password, data.password2))
+    errors.password2 = 'Password must match';
 
   return {
     errors,
@@ -28,13 +26,14 @@ function validateInput(data) {
   }
 }
 
-class LoginForm extends Component {
+class ResetPasswordSetForm extends Component {
 
   constructor(props){
   	super(props);
   	this.state = {
-      email: '',
       password: '',
+      password2: '',
+      token: this.props.token,
       errors: {},
       serverErrors: [],
       isLoading: false
@@ -60,15 +59,18 @@ class LoginForm extends Component {
     if(this.isValid()) {
       this.setState({errors: {}, isLoading: true});
 
-      this.props.login(this.state).then(
+      this.props.reset(this.state).then(
         res => {
-          this.setState({isLoading: false});
-          this.props.history.push('/dashboard');
+          if(res.data.success === true) {
+            this.setState({isLoading: false});
+            this.props.history.push('/resetpassword/congratulation');
+          }
         },
         err => {
           this.setState({serverErrors: err.response.data.errors, isLoading: false});
         }
-      )
+      );
+
     }
   }
 
@@ -84,29 +86,25 @@ class LoginForm extends Component {
 
     return (
 
+
       <div className="page_body padding_top_header">
+
         <section className="sign_up_section mwidth_680">
           <div className="resolution padding_lr">
             <div className="hn2 ta_c">
-              <h1>Log In</h1>
+              <h1>Reset Your password</h1>
             </div>
             <br/>
-            <FlashMessages messages={this.state.serverErrors} />
+            <FlashMessages messages={this.state.serverErrors}/>
             <div className="mwidth_320">
-              <form onSubmit={this.onSubmit} className="form_login form_style_1" noValidate='novalidate'>
-
-                <TextFieldGroup type="email" placeholder="Email" name="email" onChange={this.onChange} error={errors.email}/>
+              <form className="form_reset_password form_style_1">
                 <TextFieldGroup type="password" placeholder="Password" name="password" onChange={this.onChange} error={errors.password}/>
+                <TextFieldGroup type="password" placeholder="Confirm Password" name="password2" onChange={this.onChange} error={errors.password2}/>
                 <div className="form_footer">
                   <div className="form_footer_btns">
                     <div className="btn_color_fill">
-                      <button type="submit" disabled={isLoading}>Log In</button>
+                      <button type="submit" onClick={this.onSubmit} disabled={isLoading}>Send</button>
                     </div>
-                  </div>
-                  <div><Link to="/resetpassword">Forgot password?</Link></div>
-                  <div style={{float: 'right'}}>
-                    <input type="checkbox" value="remember-me" id="rememberMeCheckbox" style={{background: '#f39b12'}}/>
-                    <label htmlFor="rememberMeCheckbox" style={{color: '#f39b12', top:-20}}>Remember me</label>
                   </div>
                 </div>
               </form>
@@ -121,9 +119,10 @@ class LoginForm extends Component {
 
 }
 
-LoginForm.propTypes = {
-  login: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+ResetPasswordSetForm.propTypes = {
+  reset: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  token: PropTypes.string.isRequired
 }
 
-export default connect(null, {login})(LoginForm);
+export default connect(null, { reset })(ResetPasswordSetForm);

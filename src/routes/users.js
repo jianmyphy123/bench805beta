@@ -120,7 +120,7 @@ router.post('/activate/:token', function(req, res) {
           res.status(400).json({errors: 'Activation link has expires'});
         } else {
           user.update({active: true, temporaryToken: null}).then(() => {
-            res.json({confirmation: 'success'});
+            return res.json({confirmation: 'success'});
           });
         }
       });

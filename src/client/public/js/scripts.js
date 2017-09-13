@@ -422,29 +422,29 @@ jQuery(document).ready(function(){
 	// 	}
 	// });
 
-	$(".form_reset_password").validate({
-		rules:{
-			password:{
-				required: true,
-				minlength: 6
-			},
-			password2:{
-				required: true,
-				equalTo: "#password"
-			}
-
-		},
-		messages:{
-			password:{
-				required: "Please enter a new password.",
-				minlength: "Too short password."
-			},
-			password2:{
-				required: "Please confirm the password.",
-				equalTo: "Passwords do not match"
-			}
-		}
-	});
+	// $(".form_reset_password").validate({
+	// 	rules:{
+	// 		password:{
+	// 			required: true,
+	// 			minlength: 6
+	// 		},
+	// 		password2:{
+	// 			required: true,
+	// 			equalTo: "#password"
+	// 		}
+	//
+	// 	},
+	// 	messages:{
+	// 		password:{
+	// 			required: "Please enter a new password.",
+	// 			minlength: "Too short password."
+	// 		},
+	// 		password2:{
+	// 			required: "Please confirm the password.",
+	// 			equalTo: "Passwords do not match"
+	// 		}
+	// 	}
+	// });
 
 	$('.cmn-toggle-yes-no').click(function(e) {
 		var checkval = this.checked ? 1 : 0;

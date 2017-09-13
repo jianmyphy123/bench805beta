@@ -5,7 +5,7 @@ import {
   UserLogin, UserSignup, UserSignupConfirmation, UserSignupCongratulation, ActivateAccount,
   About, TermsOfService, PrivacyPolicy,
   Dashboard, Admin,
-  UserResetPassword
+  UserResetPassword, UserResetPasswordEmailSent, UserResetPasswordSet, UserResetPasswordCongratulation
 } from './pages';
 import requireAuth from './utils/requireAuth';
 import requireAdmin from './utils/requireAdmin';
@@ -27,7 +27,10 @@ class App extends Component {
             <Route path='/privacypolicy' component={PrivacyPolicy} />
             <Route path='/dashboard' component={requireAuth(Dashboard)} />
             <Route path='/admin' component={requireAdmin(Admin)} />
-            <Route path='/resetpassword' component={UserResetPassword} />
+            <Route exact path='/resetpassword' component={UserResetPassword} />
+            <Route exact path='/resetpassword/emailsent' component={UserResetPasswordEmailSent} />
+            <Route exact path='/resetpassword/congratulation' component={UserResetPasswordCongratulation} />
+            <Route path='/resetpassword/:token' component={UserResetPasswordSet} />
           </Switch>
         </div>
       </Router>

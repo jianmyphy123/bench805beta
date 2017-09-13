@@ -10,6 +10,9 @@ import PrivacyPolicy from './PrivacyPolicy';
 import Dashboard from './Dashboard';
 import Admin from './Admin';
 import UserResetPassword from './UserResetPassword';
+import UserResetPasswordEmailSent from './UserResetPasswordEmailSent';
+import UserResetPasswordSet from './UserResetPasswordSet';
+import UserResetPasswordCongratulation from './UserResetPasswordCongratulation';
 
 export {
   Home,
@@ -23,5 +26,8 @@ export {
   PrivacyPolicy,
   Dashboard,
   Admin,
-  UserResetPassword
+  UserResetPassword,
+  UserResetPasswordEmailSent,
+  UserResetPasswordSet,
+  UserResetPasswordCongratulation
 }

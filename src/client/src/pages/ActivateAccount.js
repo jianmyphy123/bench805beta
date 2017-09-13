@@ -13,7 +13,7 @@ class ActivateAccount extends Component {
     };
   }
 
-  componentDidMount(prevProps, prevState) {
+  componentDidMount() {
 
     document.title = 'bench805.com | Activate Account'
 
