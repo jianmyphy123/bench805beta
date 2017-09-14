@@ -14,7 +14,7 @@ class UserSignup extends Component {
       <div id="main_container">
         <Header />
         <Footer />
-        <SignupForm/>
+        <SignupForm history={this.props.history}/>
 
       </div>
 

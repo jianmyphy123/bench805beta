@@ -164,7 +164,7 @@ class SignupForm extends Component {
                   <div className="form_footer_btns two_buttons clrfx">
                     <div className="btn_color_space"><Link to="/login">Log In</Link></div>
                     <div className="btn_color_fill">
-                      <a onClick={this.onSignup} disabled={this.state.isLoading || this.state.invalid} type="submit">Sign Up</a>
+                      <button onClick={this.onSignup} disabled={this.state.isLoading || this.state.invalid} type="submit">Sign Up</button>
                     </div>
                   </div>
                 </div>
@@ -182,7 +182,8 @@ class SignupForm extends Component {
 
 SignupForm.propTypes = {
   userSignupRequest: PropTypes.func.isRequired,
-  isUserExists: PropTypes.func.isRequired
+  isUserExists: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 export default connect(null, {userSignupRequest, isUserExists})(SignupForm);

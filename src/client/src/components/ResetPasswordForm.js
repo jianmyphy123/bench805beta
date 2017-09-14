@@ -66,7 +66,8 @@ class ResetPasswordForm extends Component {
           }
         },
         err => {
-          this.setState({serverErrors: err.response.data.errors, isLoading: false})
+          this.setState({serverErrors: err.response.data.errors, isLoading: false});
+          setTimeout(() => { this.setState({serverErrors: []}) }, 10000);
         }
       );
 

@@ -4,7 +4,7 @@ import {
   Home,
   UserLogin, UserSignup, UserSignupConfirmation, UserSignupCongratulation, ActivateAccount,
   About, TermsOfService, PrivacyPolicy,
-  Dashboard, Admin,
+  Dashboard, Admin, AdminViewTable,
   UserResetPassword, UserResetPasswordEmailSent, UserResetPasswordSet, UserResetPasswordCongratulation
 } from './pages';
 import requireAuth from './utils/requireAuth';
@@ -26,7 +26,8 @@ class App extends Component {
             <Route path='/termsofservice' component={TermsOfService} />
             <Route path='/privacypolicy' component={PrivacyPolicy} />
             <Route path='/dashboard' component={requireAuth(Dashboard)} />
-            <Route path='/admin' component={requireAdmin(Admin)} />
+            <Route exact path='/admin' component={requireAdmin(Admin)} />
+            <Route path='/admin/viewtable' component={requireAdmin(AdminViewTable)} />
             <Route exact path='/resetpassword' component={UserResetPassword} />
             <Route exact path='/resetpassword/emailsent' component={UserResetPasswordEmailSent} />
             <Route exact path='/resetpassword/congratulation' component={UserResetPasswordCongratulation} />

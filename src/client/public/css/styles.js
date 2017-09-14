@@ -2071,21 +2071,5 @@ export default StyleSheet.create({
         "color": "#3c763d",
         "background": "#dff0d8",
         "borderColor": "#d6e9c6"
-    },
-    "ulsuccess": {
-        "WebkitAnimation": "seconds 1.0s forwards",
-        "WebkitAnimationIterationCount": 1,
-        "WebkitAnimationDelay": "10s",
-        "animation": "seconds 1.0s forwards",
-        "animationIterationCount": 1,
-        "animationDelay": "10s"
-    },
-    "ulerror": {
-        "WebkitAnimation": "seconds 1.0s forwards",
-        "WebkitAnimationIterationCount": 1,
-        "WebkitAnimationDelay": "10s",
-        "animation": "seconds 1.0s forwards",
-        "animationIterationCount": 1,
-        "animationDelay": "10s"
     }
 });

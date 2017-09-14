@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Validator from 'validator';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { login } from '../actions/authActions';
 
+import { login } from '../actions/authActions';
 import TextFieldGroup from './common/TextFieldGroup';
 import FlashMessages from './FlashMessages';
 
@@ -63,10 +63,17 @@ class LoginForm extends Component {
       this.props.login(this.state).then(
         res => {
           this.setState({isLoading: false});
-          this.props.history.push('/dashboard');
+
+          const { isAdmin } = this.props.auth;
+
+          if(isAdmin)
+            this.props.history.push('/admin');
+          else
+            this.props.history.push('/dashboard');
         },
         err => {
           this.setState({serverErrors: err.response.data.errors, isLoading: false});
+          setTimeout(() => { this.setState({serverErrors: []}) }, 10000);
         }
       )
     }
@@ -123,7 +130,14 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 }
 
-export default connect(null, {login})(LoginForm);
+function mapStateToProps(state) {
+  return {
+    auth: state.auth
+  }
+}
+
+export default connect(mapStateToProps, {login})(LoginForm);

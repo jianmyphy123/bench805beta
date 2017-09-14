@@ -13,6 +13,7 @@ import UserResetPassword from './UserResetPassword';
 import UserResetPasswordEmailSent from './UserResetPasswordEmailSent';
 import UserResetPasswordSet from './UserResetPasswordSet';
 import UserResetPasswordCongratulation from './UserResetPasswordCongratulation';
+import AdminViewTable from './AdminViewTable';
 
 export {
   Home,
@@ -29,5 +30,6 @@ export {
   UserResetPassword,
   UserResetPasswordEmailSent,
   UserResetPasswordSet,
-  UserResetPasswordCongratulation
+  UserResetPasswordCongratulation,
+  AdminViewTable
 }

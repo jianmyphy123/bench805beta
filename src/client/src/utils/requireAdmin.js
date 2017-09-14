@@ -32,7 +32,8 @@ export default function(ComposedComponent) {
 
   function mapStateToProps(state) {
     return {
-      isAuthenticated: state.auth.isAuthenticated
+      isAuthenticated: state.auth.isAuthenticated,
+      isAdmin: state.auth.isAdmin
     }
   }
 
