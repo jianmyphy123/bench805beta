@@ -282,17 +282,17 @@ jQuery(document).ready(function(){
 		});
 	});
 
-	jQuery(function ($) {
-		$(document).mouseup(function (c) {
-
-			var div = $(".drop_down_box");
-			if (!div.is(c.target)
-				&& div.has(c.target).length === 0 ) {
-				div.removeClass("active");
-			}
-		});
-
-	});
+	// jQuery(function ($) {
+	// 	$(document).mouseup(function (c) {
+	//
+	// 		var div = $(".drop_down_box");
+	// 		if (!div.is(c.target)
+	// 			&& div.has(c.target).length === 0 ) {
+	// 			div.removeClass("active");
+	// 		}
+	// 	});
+	//
+	// });
 
 	// FORMS - PLUS\MINUS NUMBER PRODUCT
 	//===============================================================

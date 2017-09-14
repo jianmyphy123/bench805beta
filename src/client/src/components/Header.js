@@ -47,8 +47,15 @@ class Header extends Component {
             <div className="btn_menu_vis"></div>
             {
               isAuthenticated ?
+
               isAdmin ?
-                <div></div>
+                <nav className="header_menu">
+                  <div><Link to="/admin" title="bench805.com | Admin">Admin</Link></div>
+                  <div><Link to="/dashboard" title="bench805.com | Benchmarking">Benchmarking</Link></div>
+                  <div><Link to="/admin/viewtable" title="bench805.com | View Table">View Table</Link></div>
+                  <div><Link to="/admin/users" title="bench805.com | Manage Users">Manage Users</Link></div>
+                  <div><Link to="/admin/trackusers" title="bench805.com | Track Users">Track Users</Link></div>
+                </nav>
               : <nav className="header_menu">
                   <div><Link to="/about" title="bench805.com | About">About</Link></div>
                   <div><Link to="/dashboard" title="bench805.com | Benchmarking">Benchmarking</Link></div>

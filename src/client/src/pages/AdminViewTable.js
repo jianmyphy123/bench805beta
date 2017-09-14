@@ -18,6 +18,10 @@ class AdminViewTable extends Component {
 
     this.props.mainTableData().then(
       res => {
+
+        res.data.tabledata.shift();
+
+
         this.setState({
           tableData: res.data.tabledata
         });
@@ -84,7 +88,7 @@ class AdminViewTable extends Component {
         </div>
 
       );
-    })
+    });
 
     return (
 
