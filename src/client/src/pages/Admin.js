@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header, Footer } from '../components';
-import { upload } from '../actions/uploadActions';
+import { upload } from '../actions/adminActions';
 
 import FlashMessages from '../components/FlashMessages';
 

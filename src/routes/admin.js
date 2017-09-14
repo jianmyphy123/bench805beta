@@ -57,4 +57,14 @@ router.post('/upload', function(req, res) {
 
 });
 
+router.post('/viewtable', function(req, res) {
+
+  mainController.fetchTableData().then(data => {
+
+    res.json({tabledata: data});
+
+  })
+
+});
+
 module.exports = router;

@@ -69,7 +69,7 @@ module.exports = {
     let row = rows.shift();
 
   	row = this.convertRow(row);
-    
+
     Main.findOne({where: {col44: row["col44"]}}).then(data => {
       if(data) {
         data.update(row).then(() => {
@@ -97,6 +97,12 @@ module.exports = {
   	this.saveRow(rows, () => {
   		callback();
   	});
+
+  },
+
+  fetchTableData: function() {
+
+    return Main.findAll();
 
   }
 
